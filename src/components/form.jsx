@@ -96,18 +96,44 @@ function DynamicForm() {
                     <StyledInlineErrorMessage>{msg}</StyledInlineErrorMessage>
                   )}
                 </ErrorMessage>
+
+                <Label htmlFor="subject">
+                  Subject
+                  <Input
+                    type="text"
+                    name="subject"
+                    autoCorrect="off"
+                    autoComplete="subject"
+                    placeholder="Subject"
+                  />
+                </Label>
+
+                <Label htmlFor="message">
+                  Message
+                  <Input
+                    type="text"
+                    name="mesage"
+                    autoCorrect="off"
+                    autoComplete="message"
+                    placeholder="Your message"
+                    component="textarea"
+                    rows="4"
+                  />
+                </Label>
+
+
                 <Submit type="submit" disabled={!isValid || isSubmitting}>
                   {isSubmitting ? `Submiting...` : `Submit`}
                 </Submit>
               </Form>
-
+              {/* 
               <hr />
               <CodeWrapper>
                 <strong>Errors:</strong> {JSON.stringify(errors, null, 2)}
                 <strong>Touched:</strong> {JSON.stringify(touched, null, 2)}
                 {formValues && <strong>Submitted values:</strong>}
                 {JSON.stringify(formValues, null, 2)}
-              </CodeWrapper>
+              </CodeWrapper> */}
             </>
           );
         }}
@@ -115,7 +141,7 @@ function DynamicForm() {
 
 
     </Container>
-    
+
   );
 }
 

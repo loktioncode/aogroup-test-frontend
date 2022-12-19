@@ -1,10 +1,12 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import DynamicForm from "./components/";
+import ContactForm from "./components/";
 
 function App() {
-  return <DynamicForm />;
+  return (
+    <ContactForm />
+  );
 }
 
 export default App;
