@@ -29,13 +29,14 @@ function DynamicForm() {
         CONTACT US
       </Title>
 
-
       <hr />
 
       <Formik
         initialValues={{
           fullname: "",
-          email: ""
+          email: "",
+          subject: "",
+          message: "",
         }}
         validationSchema={validationSchema}
         onSubmit={(values, actions) => {
@@ -112,7 +113,7 @@ function DynamicForm() {
                   Message
                   <Input
                     type="text"
-                    name="mesage"
+                    name="message"
                     autoCorrect="off"
                     autoComplete="message"
                     placeholder="Your message"
@@ -126,14 +127,14 @@ function DynamicForm() {
                   {isSubmitting ? `Submiting...` : `Submit`}
                 </Submit>
               </Form>
-              {/* 
+              
               <hr />
               <CodeWrapper>
                 <strong>Errors:</strong> {JSON.stringify(errors, null, 2)}
                 <strong>Touched:</strong> {JSON.stringify(touched, null, 2)}
                 {formValues && <strong>Submitted values:</strong>}
                 {JSON.stringify(formValues, null, 2)}
-              </CodeWrapper> */}
+              </CodeWrapper>
             </>
           );
         }}
