@@ -11,6 +11,9 @@ import {
   CodeWrapper
 } from "./styles";
 
+import { useSelector, useDispatch } from 'react-redux'
+import { submitData } from '../config/contactSlice'
+
 const validationSchema = Yup.object().shape({
   fullname: Yup.string()
     .min(2, "Name is too short")
@@ -21,6 +24,8 @@ const validationSchema = Yup.object().shape({
 });
 
 function DynamicForm() {
+  const contact = useSelector((state) => state.contact.value)
+  const dispatch = useDispatch()
   const [formValues, setFormValues] = React.useState();
 
   return (
@@ -40,9 +45,9 @@ function DynamicForm() {
         }}
         validationSchema={validationSchema}
         onSubmit={(values, actions) => {
-          console.log(values);
           setFormValues(values);
-
+          dispatch(submitData(values))
+          console.log(values);
           const timeOut = setTimeout(() => {
             actions.setSubmitting(false);
 
