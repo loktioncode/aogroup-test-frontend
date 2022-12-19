@@ -2,7 +2,7 @@ import React from "react";
 import { useRouteError } from "react-router-dom";
 import {
     Title
-} from "./components/styles";
+} from "../components/styles";
 
 export default function ErrorPage() {
     const error = useRouteError();

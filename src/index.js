@@ -1,17 +1,24 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App";
+import Contact from "./pages/Contact";
+import Work from "./pages/Work";
+
 import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { store } from "./redux-config/store";
 import { Provider } from "react-redux";
-import ErrorPage from "./error-page";
+import ErrorPage from "./pages/error-page";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <Contact />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/work",
+    element: <Work />,
     errorElement: <ErrorPage />,
   },
 ]);
