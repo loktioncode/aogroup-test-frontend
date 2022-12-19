@@ -172,6 +172,7 @@ export const ModalBlock = styled.div`
   display: flex;
   opacity: 1;
   z-index: 400;
+  font-size: 1
 `;
 
 export const ModalOverlay = styled.a`
@@ -210,6 +211,7 @@ export const ModalBody = styled.div`
   overflow-y: auto;
   padding: 30px 10px;
   position: relative;
+  font-size: 24px
 `;
 
 export const ModalHeader = styled.div`
@@ -221,8 +223,8 @@ export const ModalHeader = styled.div`
 `;
 
 export const ModalTitle = styled.span`
-  font-size: 30px;
-  font-weight: 500;
+  font-size: 34px;
+  font-weight: 600;
 `;
 
 export const ModalFooter = styled.div`

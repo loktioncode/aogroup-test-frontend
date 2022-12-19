@@ -27,10 +27,12 @@ function ContactForm() {
   const contact = useSelector((state) => state.contact.value)
   const dispatch = useDispatch()
   const [active, setActive] = React.useState(false);
+  const [contactInfo, setContactInfo] = React.useState({});
+
 
 
   React.useEffect(() => {
-    console.log(">>>", contact)
+    setContactInfo(contact);
   }, [contact])
 
 
@@ -73,11 +75,33 @@ function ContactForm() {
               <Modal
                 active={active}
                 hideModal={() => setActive(false)}
-                title="Modal title goes here"
+                title={`Thank you!`}
                 footer={<a href="/" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">BACK</a>}
               >
-                Modal body content goes here..
+
+                {
+                  contactInfo !== undefined ? (
+                    <>
+                      <p>
+                        FullName: {contactInfo.fullname}
+                      </p>
+                      <p>
+                        Email: {contactInfo.email}
+                      </p>
+                      <p>
+                        Subject: {contactInfo.subject}
+                      </p>
+
+                      <p>
+                        Message: {contactInfo.message}
+                      </p>
+                    </>
+
+                  ) : null
+                }
+
               </Modal>
+
               <Form name="contact" method="post" onSubmit={handleSubmit}>
                 <Label htmlFor="fullname">
                   Fullname
