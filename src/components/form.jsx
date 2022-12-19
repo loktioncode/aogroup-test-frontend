@@ -1,8 +1,8 @@
 import React from "react";
+import * as Yup from "yup";
 import { Formik, Form, ErrorMessage } from "formik";
-
 import {
-  PageWrapper,
+  Container,
   Title,
   Label,
   Input,
@@ -11,14 +11,22 @@ import {
   CodeWrapper
 } from "./styles";
 
+const validationSchema = Yup.object().shape({
+  fullname: Yup.string()
+    .min(2, "Name is too short")
+    .required("Please enter your fullname"),
+  email: Yup.string()
+    .email("Email is incorrect")
+    .required("Please enter Email address")
+});
+
 function DynamicForm() {
   const [formValues, setFormValues] = React.useState();
 
-
   return (
-    <PageWrapper>
+    <Container>
       <Title>
-        React form validation with formik and styled components demo
+        CONTACT US
       </Title>
 
 
@@ -106,7 +114,7 @@ function DynamicForm() {
       </Formik>
 
 
-    </PageWrapper>
+    </Container>
     
   );
 }

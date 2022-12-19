@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import InputFieldProps from "./InputFieldProps";
 
-export const PageWrapper = styled.section`
+export const Container = styled.section`
   &,
   & * {
     box-sizing: border-box;
@@ -148,7 +148,6 @@ export const StyledInlineErrorMessage = styled.div`
 export const Submit = styled.button`
   width: 100%;
   margin-top: 1.5rem;
-
   background-color: rgb(24, 81, 187);
   display: block;
   text-align: center;
