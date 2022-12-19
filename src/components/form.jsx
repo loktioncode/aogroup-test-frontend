@@ -7,16 +7,15 @@ import {
   Label,
   Input,
   StyledInlineErrorMessage,
-  Submit,
-  CodeWrapper
+  Submit
 } from "./styles";
 
 import { useSelector, useDispatch } from 'react-redux'
-import { submitData } from '../config/contactSlice'
+import { submitData } from '../redux-config/contactSlice'
 
 const validationSchema = Yup.object().shape({
   fullname: Yup.string()
-    .min(2, "Name is too short")
+    .min(4, "Name is too short")
     .required("Please enter your fullname"),
   email: Yup.string()
     .email("Email is incorrect")
@@ -26,7 +25,12 @@ const validationSchema = Yup.object().shape({
 function DynamicForm() {
   const contact = useSelector((state) => state.contact.value)
   const dispatch = useDispatch()
-  const [formValues, setFormValues] = React.useState();
+
+
+  React.useEffect(() => {
+    console.log(">>>", contact)
+  }, [contact])
+  
 
   return (
     <Container>
@@ -35,22 +39,13 @@ function DynamicForm() {
       </Title>
 
       <hr />
-
       <Formik
-        initialValues={{
-          fullname: "",
-          email: "",
-          subject: "",
-          message: "",
-        }}
+        initialValues={contact}
         validationSchema={validationSchema}
         onSubmit={(values, actions) => {
-          setFormValues(values);
-          dispatch(submitData(values))
-          console.log(values);
+          dispatch(submitData(values));
           const timeOut = setTimeout(() => {
             actions.setSubmitting(false);
-
             clearTimeout(timeOut);
           }, 1000);
         }}
@@ -132,20 +127,13 @@ function DynamicForm() {
                   {isSubmitting ? `Submiting...` : `Submit`}
                 </Submit>
               </Form>
-              
-              <hr />
-              <CodeWrapper>
-                <strong>Errors:</strong> {JSON.stringify(errors, null, 2)}
-                <strong>Touched:</strong> {JSON.stringify(touched, null, 2)}
-                {formValues && <strong>Submitted values:</strong>}
-                {JSON.stringify(formValues, null, 2)}
-              </CodeWrapper>
+
+
             </>
           );
         }}
       </Formik>
-
-
+      
     </Container>
 
   );

@@ -13,7 +13,6 @@ export const contactSlice = createSlice({
   reducers: {
     submitData: (state, action) => {
       state.value = action.payload;
-      console.log(">>", action.payload);
     },
   },
 });
