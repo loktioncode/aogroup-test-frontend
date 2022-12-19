@@ -62,12 +62,10 @@ function ContactForm() {
         }}
       >
         {({
-          values,
           errors,
           touched,
           handleSubmit,
           isSubmitting,
-          isValidating,
           isValid
         }) => {
           return (

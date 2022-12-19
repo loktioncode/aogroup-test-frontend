@@ -1,11 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  fullname: "",
-  email: "",
-  subject: "",
-  message: "",
-};
+const initialState = {};
 
 export const contactSlice = createSlice({
   name: "contact",
