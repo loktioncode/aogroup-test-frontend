@@ -9,6 +9,7 @@ import {
   StyledInlineErrorMessage,
   Submit
 } from "./styles";
+import Modal from "./modal";
 
 import { useSelector, useDispatch } from 'react-redux'
 import { submitData } from '../redux-config/contactSlice'
@@ -22,28 +23,36 @@ const validationSchema = Yup.object().shape({
     .required("Please enter Email address")
 });
 
-function DynamicForm() {
+function ContactForm() {
   const contact = useSelector((state) => state.contact.value)
   const dispatch = useDispatch()
+  const [active, setActive] = React.useState(false);
 
 
   React.useEffect(() => {
     console.log(">>>", contact)
   }, [contact])
-  
+
 
   return (
     <Container>
       <Title>
         CONTACT US
       </Title>
+      <Modal />
 
       <hr />
       <Formik
-        initialValues={contact}
+        initialValues={{
+          fullname: "",
+          email: "",
+          subject: "",
+          message: "",
+        }}
         validationSchema={validationSchema}
         onSubmit={(values, actions) => {
           dispatch(submitData(values));
+          setActive(true);
           const timeOut = setTimeout(() => {
             actions.setSubmitting(false);
             clearTimeout(timeOut);
@@ -61,6 +70,14 @@ function DynamicForm() {
         }) => {
           return (
             <>
+              <Modal
+                active={active}
+                hideModal={() => setActive(false)}
+                title="Modal title goes here"
+                footer={<a href="/" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">BACK</a>}
+              >
+                Modal body content goes here..
+              </Modal>
               <Form name="contact" method="post" onSubmit={handleSubmit}>
                 <Label htmlFor="fullname">
                   Fullname
@@ -133,11 +150,11 @@ function DynamicForm() {
           );
         }}
       </Formik>
-      
+
     </Container>
 
   );
 }
 
 
-export default DynamicForm;
+export default ContactForm;

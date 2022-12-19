@@ -1,4 +1,4 @@
-import DynamicForm from './form';
+import ContactForm from './form';
 
 
-export default DynamicForm;
+export default ContactForm;
