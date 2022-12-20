@@ -29,11 +29,7 @@ export const Container = styled.section`
   border-radius: 4px;
 `;
 
-export const Title = styled.h1`
-  font-size: 1rem;
-  line-height: 1.25rem;
-  margin-top: 0;
-`;
+
 
 export const Label = styled.label`
   margin-top: 1.5rem;

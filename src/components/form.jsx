@@ -38,9 +38,7 @@ function ContactForm() {
 
   return (
     <Container>
-      <Title>
-        CONTACT US
-      </Title>
+      <h1>CONTACT US</h1>
       <Modal />
 
       <hr />
